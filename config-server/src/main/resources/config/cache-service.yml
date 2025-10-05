@@ -1,0 +1,41 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cloud:
+    function:
+      definition: updateClientInfoSink; updateProductInfoSink
+    stream:
+      kafka:
+        binder:
+          brokers: localhost
+      bindings:
+        updateClientInfoSink-in-0:
+          destination: clientChangeTopic
+          group: cacheServiceGroup
+        updateProductInfoSink-in-0:
+          destination: productChangeTopic
+          group: cacheServiceGroup
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/logistix
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+token:
+  converter:
+    principal-attribute: preferred_username
+    resource-id: cache-service
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    preferIpAddress: true
+
+evict-cache-cron: '0 0 * * * *'

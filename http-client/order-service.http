@@ -1,0 +1,29 @@
+GET http://localhost:8200/api/v1/order/7f000001-97b8-1503-8197-b8254f730000/info
+Authorization: bearer {{auth_token}}
+
+###
+
+POST http://localhost:8200/api/v1/order
+Authorization: bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "orderNumber": "12345678",
+  "clientId": "7f000001-97b5-13af-8197-b5b50fcd0000",
+  "deliveryAddress": "Куда-то",
+  "items": [
+    {
+      "quantity": 1,
+      "price": 10.00,
+      "productCode": "product-1",
+      "productName": "Продукт"
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8072/order-service/api/v1/order/7f000001-96cb-199f-8196-cb30d9d80000/info
+Authorization: bearer {{auth_token}}
+
+###

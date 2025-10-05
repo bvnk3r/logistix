@@ -1,0 +1,45 @@
+GET http://localhost:8200/api/v1/order/7f000001-96cb-199f-8196-cb30d9d80000/info
+Authorization: bearer {{auth_token}}
+
+###
+
+POST http://localhost:8200/internal/api/v1/order
+Authorization: bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "orderNumber": "123",
+  "clientId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "items": [
+    {
+      "quantity": 1,
+      "price": 100.00,
+      "productCode": "1234"
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8072/order-service/api/v1/order/7f000001-96cb-199f-8196-cb30d9d80000/info
+Authorization: bearer {{auth_token}}
+
+###
+
+GET http://localhost:8202/api/v1/client/3fa85f64-5717-4562-b3fc-2c963f66afa6/info
+Authorization: bearer {{auth_token}}
+
+###
+
+PUT http://localhost:8202/internal/api/v1/client/3fa85f64-5717-4562-b3fc-2c963f66afa6
+Authorization: bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "name",
+  "address": "address",
+  "phone": "phone",
+  "type": "UL"
+}
+
+###

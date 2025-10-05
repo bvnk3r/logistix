@@ -1,0 +1,14 @@
+POST http://localhost:8204/internal/api/v1/product
+Authorization: bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "code": "123456",
+  "name": "salt",
+  "unit": "kg",
+  "place": "A-01-10",
+  "amount": 50,
+  "price": 10
+}
+
+###

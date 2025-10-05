@@ -1,0 +1,12 @@
+server:
+  port: 8202
+
+spring:
+  application:
+    name: @project.artifactId@
+  config:
+    import: optional:configserver:http://localhost:8071
+  mvc:
+    log-request-details: true
+  security:
+    enabled: false
